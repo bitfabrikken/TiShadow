@@ -82,6 +82,7 @@ exports.find = function(file) {
     do_file_name,
     i;
     for (i in density_folders) {
+      if (typeof(density_folders[i].replace) == "undefined") return null;
       do_file_name = d_file_name.replace("%FOLDER%", density_folders[i].replace('%ORIENTATION%', density_orientation));
       do9_file_name = injectSuffix(do_file_name, '.9');
       if (Ti.Filesystem.getFile(do_file_name).exists() || Ti.Filesystem.getFile(do9_file_name).exists()) {
